@@ -34,12 +34,12 @@ class TicTacToe
     user_input.to_i - 1
   end
 
-  def move(position, char)
-    @board[position] = char
+  def move(index, char)
+    @board[index] = char
   end
 
-  def position_taken?(index_value)
-    ((@board[index_value] == "X") || (@board[index_value] == "O"))
+  def position_taken?(index)
+    ((@board[index] == "X") || (@board[index] == "O"))
   end
 
   def valid_move?(index)
@@ -97,13 +97,14 @@ class TicTacToe
 
 
   def play
-    while over? == false
-      turn
+   while !over? && !won? && !draw? 
+      turn 
     end
-    if won?
+     if won?
       puts "Congratulations #{winner}!"
     elsif draw?
       puts "Cat's Game!"
     end
   end
+
 end
